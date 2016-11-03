@@ -1,0 +1,27 @@
+extends layout.pug
+
+block content
+    style.
+        .main {
+            margin-top: 6em;
+        }
+        .ui.massive.input input {
+            padding-bottom: 0.2em !important;
+            border-bottom: 2px solid rgba(255, 255, 255, .6) !important;
+            border-radius: 0;
+            transition: all 300ms;
+        }
+        .ui.massive.input input:focus {
+            border-bottom: 2px solid rgba(255, 255, 255, .9) !important;
+        }
+
+    .ui.container.main
+        .ui.massive.fluid.inverted.transparent.icon.input
+            input(placeholder='Search Twitter')
+            i.search.icon
+
+        .ui.relaxed.divided.list
+            .item
+                a(href='/api/me') /api/me
+            .item
+                a(href='/api/search?q=%23ShamelessAmerica') /api/search?q=#ShamelessAmerica

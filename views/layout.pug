@@ -1,0 +1,32 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title safe-space
+        link(href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css', rel='stylesheet')
+        style.
+            body {
+                background: #1B1C1D;
+                color: rgba(255, 255, 255, .9);
+            }
+    body
+        .ui.inverted.segment
+            .ui.inverted.secondary.menu
+                .ui.container
+                    a.item(href='/') safe-space
+                    .right.menu
+                        if user
+                            a.item= '@' + user.username
+                            a.item(href='/logout') logout
+                        else
+                            .item
+                                a.ui.twitter.button(href='/auth/twitter')
+                                    i.twitter.icon
+                                    | Sign in with Twitter
+
+        block content
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js')
+        script.
+            $('.ui.embed').embed();

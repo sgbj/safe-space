@@ -1,0 +1,7 @@
+{
+    "twitter": {
+        "consumerKey": "Get yours from https://apps.twitter.com/",
+        "consumerSecret": "Get yours from https://apps.twitter.com/",
+        "callbackUrl": "http://127.0.0.1:3000/auth/twitter/callback"
+    }
+}
