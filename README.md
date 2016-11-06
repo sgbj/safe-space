@@ -1,6 +1,6 @@
 # safe-space
 
-Tweets are filtered based on their sentiment.
+Tweets are filtered using [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis).
 
 Inspired by South Park's [Safe Space](https://youtu.be/sXQkXXBqj_U) episode.
 
@@ -29,5 +29,6 @@ Inspired by South Park's [Safe Space](https://youtu.be/sXQkXXBqj_U) episode.
 * Node.js
 * Express.js
 * Passport.js
+* Sentiment
 * Pug
 * Twitter
