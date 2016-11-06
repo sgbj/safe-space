@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+::selection {
+    background-color: rgba(255, 255, 0, 0.6);
+    color: rgb(0, 0, 0);
+}
+
+::-moz-selection {
+    background-color: rgba(255, 255, 0, 0.6);
+    color: rgb(0, 0, 0);
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+body {
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: rgba(255, 255, 255, .86);
+    background-color:rgb(0, 0, 0);
+    background-image: linear-gradient(30deg, rgb(2, 2, 2) 12%, transparent 12.5%, transparent 87%, rgb(2, 2, 2) 87.5%, rgb(2, 2, 2)),
+        linear-gradient(150deg, rgb(2, 2, 2) 12%, transparent 12.5%, transparent 87%, rgb(2, 2, 2) 87.5%, rgb(2, 2, 2)),
+        linear-gradient(30deg, rgb(2, 2, 2) 12%, transparent 12.5%, transparent 87%, rgb(2, 2, 2) 87.5%, rgb(2, 2, 2)),
+        linear-gradient(150deg, rgb(2, 2, 2) 12%, transparent 12.5%, transparent 87%, rgb(2, 2, 2) 87.5%, rgb(2, 2, 2)),
+        linear-gradient(60deg, rgb(4, 4, 4) 25%, transparent 25.5%, transparent 75%, rgb(4, 4, 4) 75%, rgb(4, 4, 4)), 
+        linear-gradient(60deg, rgb(4, 4, 4) 25%, transparent 25.5%, transparent 75%, rgb(4, 4, 4) 75%, rgb(4, 4, 4));
+    background-size: 160px 280px;
+    background-position: 0 0, 0 0, 80px 140px, 80px 140px, 0 0, 80px 140px;
+}
+
+a {
+    color: rgba(255, 255, 0, 0.6);
+    outline-color: rgba(255, 255, 0, 1);
+    transition: all .2s;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: rgba(255, 255, 0, 1);
+}
+
+
+nav {
+    font-size: 3em;
+    line-height: 1em;
+    margin-top: 0.3em;
+}
+
+nav #hamburger {
+    color: rgba(255, 255, 255, 0.4);
+    transition: all .2s;
+    padding: 0.05em 0.25em;
+    outline: 0;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+nav #hamburger:hover, nav #hamburger:focus {
+    color: rgba(255, 255, 255, 0.86);
+}
+
+nav.active #hamburger {
+    color: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 0, 0.6);
+}
+
+nav.active #hamburger:hover, nav.active #hamburger:focus {
+    border-color: rgba(255, 255, 0, 1);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.6em;
+    line-height: 1;
+    margin-left: 3em;
+    margin-top: 0.3em;     
+    display: inline-block;
+    transition: left .2s;
+    position: absolute;
+    left: 0;
+}
+nav ul li {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+nav ul li a {
+    padding: 0.25em 0.5em;
+}
+
+nav .navbar {
+    left: -1000px;
+}
+
+nav.active .navbar {
+    left: 0;
+}
+
+nav .brand {
+    transition: opacity .2s;
+}
+
+nav.active .brand {
+    opacity: 0;
+}
+
+
+.masthead {
+    margin-top: 10em;
+    text-align: center;
+    transition: all .2s;
+}
+
+.masthead h1 {
+    font-size: 6em;
+    transition: all .2s;
+    margin-bottom: 0.5em;
+}
+
+.masthead h1 i {
+    display: block;
+    font-size: 2em;
+}
+
+.masthead h2 {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 2.5em;
+    transition: all .2s;
+}
+
+.masthead a.twitter {
+    outline: 0;
+    border: 2px solid rgba(255, 255, 0, 0.6);
+    font-size: 3em;
+    text-decoration: none;
+    padding: 0.25em 0.5em;
+    transition: all .2s;
+}
+
+.masthead a.twitter:hover, .masthead a.twitter:focus {
+    border-color: rgba(255, 255, 0, 1);
+}
+
+.masthead a.twitter i {
+    margin-right: .25em;
+}
+
+@media only screen and (max-width: 1200px) {
+    nav {
+        font-size: 2.5em;
+    }
+    .masthead {
+        margin-top: 6em;
+    }
+    .masthead h1 {
+        font-size: 4em;
+    }
+    .masthead h2 {
+        font-size: 1.5em;
+        margin-bottom: 2em;
+    }
+    .masthead a.twitter {
+        font-size: 2em;
+    }
+}
+
+.pretentious {
+    border-top: 3px solid rgba(255, 255, 0, 0.6);
+    font-size: 2em;
+    max-width: 20em;
+    margin: 2em auto;
+    padding-top: 1em;
+    line-height: 1.8;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#player {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    margin: auto;
+}
+
+main {
+    max-width: 50em;
+    margin: 6em auto 2em auto;
+}
+
+#search {
+    font-size: 3em;
+    width: 100%;
+    box-sizing: border-box;
+    border-style: none;
+    border-bottom: 3px solid rgba(255, 255, 0, 0.6);
+    outline: 0;
+    padding: 0.25em;
+    transition: all .2s;
+    color: rgba(255, 255, 255, 0.86);
+    background-color: rgb(0, 0, 0);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 100%);
+}
+
+#search:focus {
+    border-bottom-color: rgba(255, 255, 0, 1);
+}
+
+.result {
+    background-color: rgb(0, 0, 0);
+    margin-top: 2em;
+    padding: 1em;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 100%);
+}
+
+.negative {
+    opacity: 0.3;
+    transition: opacity .2s;
+}
+
+.negative:hover {
+    opacity: 1;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.animated {
+  -webkit-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}

@@ -5,6 +5,8 @@ const session = require('express-session');
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
 const OAuth = require('oauth');
+const moment = require('moment');
+const sentiment = require('sentiment');
 const config = require('./config.json');
 
 const app = express();
@@ -61,6 +63,14 @@ function twitter(req, uri, cb) {
     );
 }
 
+function friendlyDate(twitterDate) {
+    return moment(twitterDate, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow();
+}
+
+function determineSentiment(text) {
+    return sentiment(text);
+}
+
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { 
@@ -79,7 +89,27 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
 });
 
 app.get('/', ensureAuthenticated, (req, res) => {
-    res.render('index', { user: req.user })
+    if (req.query.q) {
+        twitter(req, 'https://api.twitter.com/1.1/search/tweets.json?q=' + encodeURIComponent(req.query.q), function (error, data) {
+            if (error) {
+                console.error(error);
+                res.json({ error });
+            } else {
+                var results = JSON.parse(data);
+                results.statuses.forEach(status => {
+                    status.friendlyDate = friendlyDate(status.created_at);
+                    status.sentiment = determineSentiment(status.text);
+                });
+                res.render('index', { user: req.user, results: results, q: req.query.q });
+            }  
+        });
+    } else {
+        res.render('index', { user: req.user });
+    }
+});
+
+app.get('/about', (req, res) => {
+    res.render('about', { user: req.user });
 });
 
 app.get('/api/me', ensureAuthenticated, (req, res) => {
@@ -92,11 +122,16 @@ app.get('/api/search', ensureAuthenticated, (req, res) => {
             console.error(error);
             res.json({ error });
         } else {
-            res.json(JSON.parse(data));
+            var results = JSON.parse(data);
+            results.statuses.forEach(status => {
+                status.friendlyDate = friendlyDate(status.created_at);
+                status.sentiment = determineSentiment(status.text);
+            });
+            res.json(results);
         }  
     });
 });
 
-app.listen(3000, () => {
-    console.log('Listening...');
+const server = app.listen(3000, () => {
+    console.log(`Listening at ${server.address().address}:${server.address().port}`);
 });

@@ -1,27 +1,14 @@
 extends layout.pug
 
 block content
-    style.
-        .main {
-            margin-top: 6em;
-        }
-        .ui.massive.input input {
-            padding-bottom: 0.2em !important;
-            border-bottom: 2px solid rgba(255, 255, 255, .6) !important;
-            border-radius: 0;
-            transition: all 300ms;
-        }
-        .ui.massive.input input:focus {
-            border-bottom: 2px solid rgba(255, 255, 255, .9) !important;
-        }
+    main.animated.fadeInUp
+        form(action='/')
+            input(placeholder='Search Twitter', autocomplete='off', name='q', value=(q ? q : ''))#search
+            button.sr-only Submit
 
-    .ui.container.main
-        .ui.massive.fluid.inverted.transparent.icon.input
-            input(placeholder='Search Twitter')
-            i.search.icon
-
-        .ui.relaxed.divided.list
-            .item
-                a(href='/api/me') /api/me
-            .item
-                a(href='/api/search?q=%23ShamelessAmerica') /api/search?q=#ShamelessAmerica
+        if results
+            each status in results.statuses
+                .result(class=status.sentiment.score < 0 ? 'negative' : 'positive')
+                    p!= status.text
+                    a(href='https://twitter.com/' + status.user.screen_name)!= status.user.name + ' '
+                    span= status.friendlyDate
